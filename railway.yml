@@ -1,0 +1,17 @@
+version: 1
+services:
+  app:
+    env:
+      APP_ENV: production
+      APP_DEBUG: "false"
+    # Especifica la versión de PHP que se usará
+    # y la extensión necesaria para Laravel
+    build:
+      dockerfile: Dockerfile
+      # La versión de PHP que necesitas para Laravel
+      # en este ejemplo, es la versión 8.0
+      args:
+        PHP_VERSION: "8.1.10"
+        PHP_EXTENSIONS: mbstring pdo_mysql exif pcntl bcmath gd
+    # El comando que se ejecutará cuando el contenedor inicie
+    command: php artisan serve --host 0.0.0.0 --port $PORT
